@@ -18,4 +18,5 @@ FROM alpine:3.17.1 AS production
 
 RUN apk --no-cache add ca-certificates tzdata
 COPY --from=development /chirpstack-fuota-server/build/chirpstack-fuota-server /usr/bin/chirpstack-fuota-server
-ENTRYPOINT ["/usr/bin/chirpstack-fuota-server"]
+
+ENTRYPOINT ["/usr/bin/chirpstack-fuota-server", "-c", "/configurations/chirpstack-fuota-server.toml"]
