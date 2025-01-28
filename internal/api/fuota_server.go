@@ -34,6 +34,7 @@ func (a *FUOTAServerAPI) CreateDeployment(ctx context.Context, req *fapi.CreateD
 		MulticastFrequency:                req.GetDeployment().MulticastFrequency,
 		MulticastGroupID:                  uint8(req.GetDeployment().MulticastGroupId),
 		MulticastTimeout:                  uint8(req.GetDeployment().MulticastTimeout),
+		MulticastPingSlotPeriodicity:      uint8(req.GetDeployment().MulticastPingSlotPeriod),
 		MulticastRegion:                   common.Region(req.GetDeployment().MulticastRegion),
 		FragSize:                          int(req.GetDeployment().FragmentationFragmentSize),
 		Payload:                           req.GetDeployment().Payload,
