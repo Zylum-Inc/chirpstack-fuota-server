@@ -1059,8 +1059,8 @@ devLoop:
 			break
 		}
 
-		d.sessionStartTime = time.Now().Add(d.opts.UnicastTimeout)
-		d.sessionEndTime = d.sessionStartTime.Add(time.Duration(1<<d.opts.MulticastTimeout) * time.Second)
+		d.sessionStartTime = time.Now().Add(d.opts.UnicastTimeout + (2.5*128)*time.Second)                       // waits for atleast 2 beacons, then ping slots start
+		d.sessionEndTime = d.sessionStartTime.Add(time.Duration(1<<d.opts.MulticastTimeout) * time.Second * 128) // class B specific session duration
 
 		for devEUI := range d.opts.Devices {
 			// ignore devices that have not setup the fragmentation session
